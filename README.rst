@@ -12,8 +12,10 @@ This project take advange of the excelent `React Mega Tutorial <https://blog.mig
 Running with docker
 -------------------
 
-$ git clone https://github.com/formateli/tryton_web_user_react.git -b develop
-$ docker pull node:24-alpine
-$ docker run -p 3000:3000 -v <PATH>/tryton_web_user_react/frontend:/app -w /app -it node:24-alpine yarn start
+  .. code-block:: bash
+
+    $ git clone https://github.com/formateli/tryton_web_user_react.git -b develop
+    $ docker pull node:24-alpine
+    $ docker run -p 3000:3000 -v <PATH>/tryton_web_user_react/frontend:/app -w /app -it node:24-alpine yarn start
 
 
