@@ -1,0 +1,25 @@
+import React, { useState, useEffect } from 'react';
+const BASE_API_URL = process.env.REACT_APP_BASE_API_URL;
+
+
+function App() {
+  const [currentKey, setCurrentKey] = useState(0);
+
+  useEffect(() => {
+    fetch(BASE_API_URL + '/time', {
+        method: 'GET',
+	headers: {
+          'Content-Type': 'application/json',
+        },
+	//body: JSON.stringify({'user': 'system', 'application': 'timesheet'}),
+      } ).then(res => res.json()).then(data => {
+      setCurrentKey(data.time);
+    });
+  }, []);
+
+  return (
+    <h1>{currentKey}</h1>
+  );
+}
+
+export default App;
