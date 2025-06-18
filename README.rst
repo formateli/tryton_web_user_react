@@ -6,11 +6,27 @@ A simple frontend implementation for *Tryton Web User Module* using *React*.
 
 `Tryton <https://tryton.org>`_ is business software, ideal for companies of any size, easy to use, complete and 100% Open Source.
 
-This project take advange of the excelent `React Mega Tutorial <https://blog.miguelgrinberg.com/post/introducing-the-react-mega-tutorial>`_.
+This project take advange of the excelent `React Mega Tutorial <https://blog.miguelgrinberg.com/post/introducing-the-react-mega-tutorial>`_ for the frontend development.
 
 
-Running with docker
--------------------
+Running ...
+-----------
+
+  - Tryton server must be installed and runnig with Web User and Web User Routes modules.
+  - Add cors entries in Tryton config file pointing to the react app server.
+
+  .. code-block:: config
+    [cors]
+      https:servername_or_ip:3000
+
+  - Add an .env file in the react frontend folde with two variables:
+
+  .. code-block:: bash
+
+    TRYTON_SERVER=servername_or_ip:port
+    TRYTON_DATABASE=database_name
+
+  - Run the react app server
 
   .. code-block:: bash
 
