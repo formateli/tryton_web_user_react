@@ -13,12 +13,7 @@ Running ...
 -----------
 
   - Tryton server must be `installed <https://docs.tryton.org/latest/server/topics/install.html#topics-install>`_ and runnig with `Web User <https://docs.tryton.org/latest/modules-web-user/index.html>`_ and `Web User Routes <https://github.com/formateli/trytond_web_user_routes>`_ modules.
-  - Add cors entries in Tryton config file pointing to the react app server.
-
-  .. code-block:: bash
-    [cors]
-    https:servername_or_ip:3000
-
+  - Add `cors entries <https://docs.tryton.org/latest/server/topics/configuration.html#cors>`_ in Tryton config file pointing to the react app server.
   - Add an .env file in the react frontend folde with two variables:
 
   .. code-block:: bash
