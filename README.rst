@@ -17,7 +17,7 @@ Running ...
 
   .. code-block:: bash
     [cors]
-      https:servername_or_ip:3000
+    https:servername_or_ip:3000
 
   - Add an .env file in the react frontend folde with two variables:
 
