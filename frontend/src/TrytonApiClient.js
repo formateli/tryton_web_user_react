@@ -1,15 +1,12 @@
-const TRYTON_SERVER = process.env.REACT_TRYTON_SERVER;
-
 export default class TrytonApiClient {
   constructor(onError) {
     this.onError = onError;
-    this.base_url =  TRYTON_SERVER;
   }
 
   async request(options) {
     let response = await this.requestInternal(options);
-    if (response.status === 401 && options.url !== '/tokens') {
-      const refreshResponse = await this.put('/tokens', {
+    if (response.status === 401 && options.url !== '/web-user-tokens') {
+      const refreshResponse = await this.put('/web-user-tokens', {
         access_token: localStorage.getItem('accessToken'),
       });
       if (refreshResponse.ok) {
@@ -30,15 +27,21 @@ export default class TrytonApiClient {
     }
 
     let response;
+    let url = options.server;
+    if (options.database !== undefined){
+      url = options.server + '/' + options.database;
+    }
+    url = url + options.url;
+
     try {
-      response = await fetch(options.server + options.url + query, {
+      response = await fetch(url + query, {
         method: options.method,
         headers: {
           'Content-Type': 'application/json',
-        //  'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
-        //  ...options.headers,
+          'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
+          ...options.headers,
         },
-        //credentials: options.url === '/tokens' ? 'include' : 'omit',
+	//credentials: options.url === '/web-user-tokens' ? 'include' : 'omit',
         body: options.body ? JSON.stringify(options.body) : null,
       });
     }
@@ -83,24 +86,24 @@ export default class TrytonApiClient {
     }
   }
 
-  async get(server, url, query, options) {
-    return this.request({method: 'GET', server, url, query, ...options});
+  async get(server, database, url, query, options) {
+    return this.request({method: 'GET', server, database, url, query, ...options});
   }
 
-  async post(server, url, body, options) {
-    return this.request({method: 'POST', server, url, body, ...options});
+  async post(server, database, url, body, options) {
+    return this.request({method: 'POST', server, database, url, body, ...options});
   }
 
-  async put(server, url, body, options) {
-    return this.request({method: 'PUT', server, url, body, ...options});
+  async put(server, database, url, body, options) {
+    return this.request({method: 'PUT', server, database, url, body, ...options});
   }
 
-  async delete(server, url, options) {
-    return this.request({method: 'DELETE', server, url, ...options});
+  async delete(server, database, url, options) {
+    return this.request({method: 'DELETE', server, database, url, ...options});
   }
 
-  async login(username, password) {
-    const response = await this.post('/tokens', null, {
+  async login(username, password, server, database) {
+    const response = await this.post(server, database, '/web-user-tokens', {}, {
       headers: {
         Authorization:  'Basic ' + btoa(username + ":" + password)
       }
@@ -112,8 +115,8 @@ export default class TrytonApiClient {
     return 'ok';
   }
 
-  async logout() {
-    await this.delete('/tokens');
+  async logout(server, database) {
+    await this.delete(server, database, '/web-user-tokens');
     localStorage.removeItem('accessToken');
   }
 

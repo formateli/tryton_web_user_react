@@ -18,7 +18,7 @@ export default function RegistrationPage() {
   const navigate = useNavigate();
   const api = useApi();
   const flash = useFlash();
-  const server = TRYTON_SERVER + '/' + TRYTON_DATABASE
+  //const server = TRYTON_SERVER + '/' + TRYTON_DATABASE
 
   useEffect(() => {
     emailField.current.focus();
@@ -48,7 +48,7 @@ export default function RegistrationPage() {
       return;
     }
 
-    const data = await api.post(server, '/web-user-register', {
+    const data = await api.post(TRYTON_SERVER, TRYTON_DATABASE, '/web-user-register', {
       username: username,
       password: password
     });

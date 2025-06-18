@@ -7,6 +7,9 @@ import InputField from '../components/InputField';
 import { useUser } from '../contexts/UserProvider';
 import { useFlash } from '../contexts/FlashProvider';
 
+const TRYTON_SERVER = process.env.REACT_APP_TRYTON_SERVER;
+const TRYTON_DATABASE = process.env.REACT_APP_TRYTON_DATABASE;
+
 export default function LoginPage() {
   const [formErrors, setFormErrors] = useState({});
   const usernameField = useRef();
@@ -37,7 +40,7 @@ export default function LoginPage() {
       return;
     }
 
-    const result = await login(username, password)
+    const result = await login(username, password, TRYTON_SERVER, TRYTON_DATABASE)
     if (result === 'fail') {
       flash('Invalid username or password', 'danger');
     }
