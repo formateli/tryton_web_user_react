@@ -46,4 +46,5 @@ MANIFEST
 *.png
 *.csv
 
+*.env
 *.swp
