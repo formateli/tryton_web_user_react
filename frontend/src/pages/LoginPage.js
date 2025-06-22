@@ -30,7 +30,7 @@ export default function LoginPage() {
 
     const errors = {};
     if (!username) {
-      errors.username = 'Username must not be empty.';
+      errors.username = 'Email must not be empty.';
     }
     if (!password) {
       errors.password = 'Password must not be empty.';

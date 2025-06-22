@@ -12,6 +12,7 @@ const TRYTON_DATABASE = process.env.REACT_APP_TRYTON_DATABASE;
 
 export default function RegistrationPage() {
   const [formErrors, setFormErrors] = useState({});
+  const nameField = useRef();
   const emailField = useRef();
   const passwordField = useRef();
   const password2Field = useRef();
@@ -21,18 +22,22 @@ export default function RegistrationPage() {
   //const server = TRYTON_SERVER + '/' + TRYTON_DATABASE
 
   useEffect(() => {
-    emailField.current.focus();
+    nameField.current.focus();
   }, []);
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    const name = nameField.current.value;
     const username = emailField.current.value;
     const password = passwordField.current.value;
     const password2 = password2Field.current.value;
 
     const errors = {};
+    if (!name) {
+      errors.name = 'Name must not be empty.';
+    }
     if (!username) {
-      errors.username = 'Username must not be empty.';
+      errors.username = 'Email must not be empty.';
     }
     if (!password) {
       errors.password = 'Password must not be empty.';
@@ -49,6 +54,7 @@ export default function RegistrationPage() {
     }
 
     const data = await api.post(TRYTON_SERVER, TRYTON_DATABASE, '/web-user-register', {
+      name: name,
       username: username,
       password: password
     });
@@ -67,6 +73,9 @@ export default function RegistrationPage() {
     <Body>
       <h1>Register</h1>
       <Form onSubmit={onSubmit}>
+        <InputField
+          name="name" label="Name"
+          error={formErrors.name} fieldRef={nameField} />
         <InputField
           name="email" label="Email address"
           error={formErrors.username} fieldRef={emailField} />

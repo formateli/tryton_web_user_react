@@ -1,9 +1,12 @@
 import Body from '../components/Body';
+import { useUser } from '../contexts/UserProvider';
 
 export default function WelcomePage() {
+const { user } = useUser();
+
   return (
     <Body>
-      <h1>Welcome Page</h1>
+      <h1>Welcome {user.name}</h1>
     </Body>
   ); 
 }
