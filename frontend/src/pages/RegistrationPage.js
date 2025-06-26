@@ -14,6 +14,7 @@ export default function RegistrationPage() {
   const [formErrors, setFormErrors] = useState({});
   const nameField = useRef();
   const emailField = useRef();
+  const stayField = useRef();
   const passwordField = useRef();
   const password2Field = useRef();
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ export default function RegistrationPage() {
     event.preventDefault();
     const name = nameField.current.value;
     const username = emailField.current.value;
+    const stay = stayField.current.checked;
     const password = passwordField.current.value;
     const password2 = password2Field.current.value;
 
@@ -56,7 +58,8 @@ export default function RegistrationPage() {
     const data = await api.post(TRYTON_SERVER, TRYTON_DATABASE, '/web-user-register', {
       name: name,
       username: username,
-      password: password
+      password: password,
+      stay_logged_in: stay
     });
 
     setFormErrors({});
@@ -85,6 +88,9 @@ export default function RegistrationPage() {
         <InputField
           name="password2" label="Password again" type="password"
           error={formErrors.password2} fieldRef={password2Field} />
+        <InputField
+          name="stay" label="Stay logged in" type="switch"
+          error={formErrors.stay} fieldRef={stayField} />
         <Button variant="primary" type="submit">Register</Button>
       </Form>
     </Body>
