@@ -2,12 +2,16 @@
 Tryton Web User React
 #####################
 
-A simple frontend implementation for *Tryton Web User Module* using *React*.
+A simple frontend for *Tryton Web User Module* using *React*.
+
+        - Tryton server as an API backend.
+        - User Login and Registration process.
+        - Email user verification and password change.
+        - User Authentication and Autorization (token management).
 
 `Tryton <https://tryton.org>`_ is business software, ideal for companies of any size, easy to use, complete and 100% Open Source.
 
-This project take advange of the excelent `React Mega Tutorial <https://blog.miguelgrinberg.com/post/introducing-the-react-mega-tutorial>`_ for the frontend development.
-
+Thanks to the excelent `React Mega Tutorial <https://blog.miguelgrinberg.com/post/introducing-the-react-mega-tutorial>`_ used in the learning process for the frontend design and development.
 
 Running ...
 -----------
@@ -16,12 +20,12 @@ Running ...
     
   - Add `cors entries <https://docs.tryton.org/latest/server/topics/configuration.html#cors>`_ in Tryton config file pointing to the react app server.
     
-  - Add an .env file in the react frontend folde with two variables:
+  - Add an .env file in the react frontend folde with following variables:
 
   .. code-block:: bash
 
-    TRYTON_SERVER=servername_or_ip:port
-    TRYTON_DATABASE=database_name
+    REACT_APP_TRYTON_SERVER=servername_or_ip:port
+    REACT_APP_TRYTON_DATABASE=database_name
 
   - Run the react app server
 
@@ -29,6 +33,6 @@ Running ...
 
     $ git clone https://github.com/formateli/tryton_web_user_react.git -b develop
     $ docker pull node:24-alpine
-    $ docker run -p 3000:3000 -v <PATH>/tryton_web_user_react/frontend:/app -w /app -it node:24-alpine yarn start
+    $ docker run -p 3000:3000 -v ./tryton_web_user_react/frontend:/app -w /app -it node:24-alpine yarn start
 
 
