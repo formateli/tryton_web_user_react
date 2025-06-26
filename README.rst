@@ -4,10 +4,10 @@ Tryton Web User React
 
 A simple frontend for *Tryton Web User Module* using *React*.
 
-        - Tryton server as an API backend.
-        - User Login and Registration process.
-        - Email user verification and password change.
-        - User Authentication and Autorization (token management).
+  - Tryton server or Flask app with flask_tryton as API backend.
+  - User Login and Registration process.
+  - Email user verification and password change.
+  - User Authentication and Autorization (token management).
 
 `Tryton <https://tryton.org>`_ is business software, ideal for companies of any size, easy to use, complete and 100% Open Source.
 
@@ -16,15 +16,17 @@ Thanks to the excelent `React Mega Tutorial <https://blog.miguelgrinberg.com/pos
 Running ...
 -----------
 
-  - Tryton server must be `installed <https://docs.tryton.org/latest/server/topics/install.html#topics-install>`_ and runnig with `Web User <https://docs.tryton.org/latest/modules-web-user/index.html>`_ and `Web User Routes <https://github.com/formateli/trytond_web_user_routes>`_ modules installed in all databases.
-    
+  - `Web User <https://docs.tryton.org/latest/modules-web-user/index.html>`_ and `Web User Routes <https://github.com/formateli/trytond_web_user_routes>`_ modules must be installed in all tryton databases.
+
+  - Tryton server must be `installed <https://docs.tryton.org/latest/server/topics/install.html#topics-install>`_ and `runnig <https://docs.tryton.org/latest/server/topics/start_server.html>`_. 
+
   - Add `cors entries <https://docs.tryton.org/latest/server/topics/configuration.html#cors>`_ in Tryton config file pointing to the react app server.
-    
-  - Add an .env file in the react frontend folde with following variables:
+
+  - Add an .env file in the react frontend folder with following variables:
 
   .. code-block:: bash
 
-    REACT_APP_TRYTON_SERVER=servername_or_ip:port
+    REACT_APP_TRYTON_SERVER=<http[s]://>servername_or_ip<:port>
     REACT_APP_TRYTON_DATABASE=database_name
 
   - Run the react app server
