@@ -3,11 +3,12 @@
 # the full copyright notices and license terms.
 from functools import wraps
 from trytond.config import config
+from trytond.transaction import Transaction
 from trytond.res.user import PasswordError
 from trytond.modules.web_user.exceptions import UserValidationError
 from flask import current_app, request, Response, json
 
-__all__ = ["WebUser", "wu_route"]
+__all__ = ["WebUser"]
 
 class WebUser:
 
@@ -37,7 +38,6 @@ class WebUser:
                 if request.origin in wu.cors:
                     headers['Access-Control-Allow-Origin'] = request.origin
                     headers['Vary'] = 'Origin'
-                current_app.logger.info(str(headers))
                 if request.method == 'OPTIONS':
                     headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
                     headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE'
@@ -54,6 +54,7 @@ class WebUser:
 
     @staticmethod
     def response_exception(e, status):
+        Transaction().rollback()
         if hasattr(e, 'message'):
             message = e.message
         else:
@@ -65,5 +66,3 @@ class WebUser:
             current_app.logger.warning(message)
 
         return Response(message, status)
-
-wu_route = WebUser.route
