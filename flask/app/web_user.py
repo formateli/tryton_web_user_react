@@ -7,6 +7,7 @@ from flask import current_app, request, Response, json
 
 __all__ = ["WebUser"]
 
+
 class WebUser:
 
     def __init__(self):

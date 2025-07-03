@@ -21,7 +21,7 @@ Running ...
 
   - Configure `Email <https://docs.tryton.org/latest/server/topics/configuration.html#email>`_ in Tryton config file.
 
-  - Add `cors entries <https://docs.tryton.org/latest/server/topics/configuration.html#cors>`_ in Tryton config file pointing to the react app server.
+  - Add `cors <https://docs.tryton.org/latest/server/topics/configuration.html#cors>`_ entries in Tryton config file pointing to the react app server.
 
   - Add an .env file in the react frontend folder with following variables:
 
@@ -30,14 +30,14 @@ Running ...
     REACT_APP_TRYTON_SERVER=<http[s]://>servername_or_ip<:port>
     REACT_APP_TRYTON_DATABASE=database_name
 
-  - Get git repository, download node docker image, install dependencies and run the react app server on port 3000.
+  - Clone git repository, pull node docker image, install dependencies and run the react app server on port 3000.
 
   .. code-block:: bash
 
-    $ git clone https://github.com/formateli/trytond_web_user_routes.git -b develop
+    $ git clone https://github.com/formateli/tryton_web_user_react.git -b develop
     $ docker pull node:24-alpine
-    $ $ docker run -v ./trytond_web_user_routes/react_frontend:/app -w /app -it node:24-alpine yarn install
-    $ docker run -p 3000:3000 -v ./trytond_web_user_routes/react_frontend:/app -w /app -it node:24-alpine yarn start
+    $ docker run -v ./tryton_web_user_react/frontend:/app -w /app -it node:24-alpine yarn install
+    $ docker run -p 3000:3000 -v ./trytond_web_user_react/frontend:/app -w /app -it node:24-alpine yarn start
 
 
 Thanks to the excelent `React Mega Tutorial <https://blog.miguelgrinberg.com/post/introducing-the-react-mega-tutorial>`_ used in the learning process for the frontend design and development.
