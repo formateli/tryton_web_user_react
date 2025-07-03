@@ -37,7 +37,7 @@ Running ...
     $ git clone https://github.com/formateli/tryton_web_user_react.git -b develop
     $ docker pull node:24-alpine
     $ docker run -v ./tryton_web_user_react/frontend:/app -w /app -it node:24-alpine yarn install
-    $ docker run -p 3000:3000 -v ./trytond_web_user_react/frontend:/app -w /app -it node:24-alpine yarn start
+    $ docker run -p 3000:3000 -v ./tryton_web_user_react/frontend:/app -w /app -it node:24-alpine yarn start
 
 
 Thanks to the excelent `React Mega Tutorial <https://blog.miguelgrinberg.com/post/introducing-the-react-mega-tutorial>`_ used in the learning process for the frontend design and development.
