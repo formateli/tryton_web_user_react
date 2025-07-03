@@ -4,7 +4,7 @@ Tryton Web User React
 
 A simple frontend for *Tryton Web User Module* using *React*.
 
-  - Tryton server or Flask app (`with flask_tryton <https://pypi.org/project/flask-tryton/>`_) as API backend.
+  - Tryton server or Flask app (with `flask_tryton <https://pypi.org/project/flask-tryton/>`_) as API backend.
   - User Login and Registration process.
   - User verification and password reset via email.
   - User Authentication and Autorization (token management).
@@ -30,13 +30,14 @@ Running ...
     REACT_APP_TRYTON_SERVER=<http[s]://>servername_or_ip<:port>
     REACT_APP_TRYTON_DATABASE=database_name
 
-  - Run the react app server
+  - Get git repository, download node docker image, install dependencies and run the react app server on port 3000.
 
   .. code-block:: bash
 
-    $ git clone https://github.com/formateli/tryton_web_user_react.git -b develop
+    $ git clone https://github.com/formateli/trytond_web_user_routes.git -b develop
     $ docker pull node:24-alpine
-    $ docker run -p 3000:3000 -v ./tryton_web_user_react/frontend:/app -w /app -it node:24-alpine yarn start
+    $ $ docker run -v ./trytond_web_user_routes/react_frontend:/app -w /app -it node:24-alpine yarn install
+    $ docker run -p 3000:3000 -v ./trytond_web_user_routes/react_frontend:/app -w /app -it node:24-alpine yarn start
 
 
 Thanks to the excelent `React Mega Tutorial <https://blog.miguelgrinberg.com/post/introducing-the-react-mega-tutorial>`_ used in the learning process for the frontend design and development.

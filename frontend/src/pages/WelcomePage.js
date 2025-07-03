@@ -5,7 +5,7 @@ export default function WelcomePage() {
 const { user } = useUser();
 
   return (
-    <Body>
+    <Body sidebar>
       <h1>Welcome {user.name}</h1>
     </Body>
   ); 

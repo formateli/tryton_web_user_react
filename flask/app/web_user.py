@@ -3,17 +3,11 @@
 # the full copyright notices and license terms.
 from functools import wraps
 from trytond.config import config
-from trytond.transaction import Transaction
-from trytond.res.user import PasswordError
-from trytond.modules.web_user.exceptions import UserValidationError
 from flask import current_app, request, Response, json
 
 __all__ = ["WebUser"]
 
 class WebUser:
-
-    WuPasswordError = PasswordError
-    WuUserValidationError = UserValidationError
 
     def __init__(self):
         self.cors = []
@@ -51,18 +45,3 @@ class WebUser:
                 return res
             return wrapper
         return decorator
-
-    @staticmethod
-    def response_exception(e, status):
-        Transaction().rollback()
-        if hasattr(e, 'message'):
-            message = e.message
-        else:
-            message = str(e)
-
-        if status >= 500:
-            current_app.logger.error(message)
-        else:
-            current_app.logger.warning(message)
-
-        return Response(message, status)
