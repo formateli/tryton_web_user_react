@@ -28,7 +28,6 @@ class WebUser:
             @wraps(func)
             def wrapper(*args, **kwargs):
                 wu = current_app.extensions['WebUser']
-
                 headers = {}
                 if request.origin in wu.cors:
                     headers['Access-Control-Allow-Origin'] = request.origin
@@ -38,7 +37,14 @@ class WebUser:
                     headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE'
                     headers['Access-Control-Max-Age'] = wu.timeout
                     return Response('preflight ok', 200, headers)
-                res = func()
+                #current_app.logger.info('Function: ' + func.__name__)
+                #current_app.logger.info('args: ' + str(args))
+                #current_app.logger.info('kwargs: ' + str(kwargs))
+                if 'uuid' in kwargs.keys():
+                    #current_app.logger.info('Runing ' + func.__name__)
+                    res = func(uuid=kwargs['uuid'])
+                else:
+                    res = func()
                 if isinstance(res, dict):
                     res = Response(json.dumps(res), 200)
                 if isinstance(res, Response):

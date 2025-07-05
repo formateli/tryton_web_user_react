@@ -30,3 +30,11 @@ def web_user_token():
 def web_user_me():
     wur = WebUserRoutes(Response, current_app.logger)
     return wur.web_user_me(request, tryton.pool)
+
+
+@bp.route('/<database_name>/web-user-avatar/<uuid>', methods={'OPTIONS', 'GET'})
+@wu.route()
+@tryton.transaction()
+def web_user_avatar(uuid):
+    wur = WebUserRoutes(Response, current_app.logger)
+    return wur.web_user_avatar(request, tryton.pool, uuid)

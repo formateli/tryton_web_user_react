@@ -6,6 +6,7 @@ import UserProvider from './contexts/UserProvider';
 import Header from './components/Header';
 import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivateRoute';
+import ProfilePage from './pages/ProfilePage'
 import WelcomePage from './pages/WelcomePage';
 //import ExplorePage from './pages/ExplorePage';
 //import UserPage from './pages/UserPage';
@@ -35,6 +36,7 @@ export default function App() {
                   <PrivateRoute>
                     <Routes>
                       <Route path="/" element={<WelcomePage />} />
+                      <Route path="/profile" element={<ProfilePage />} />
                       <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                   </PrivateRoute>
