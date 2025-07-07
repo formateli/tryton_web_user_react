@@ -11,8 +11,8 @@ from trytond.modules.web_user_routes.web_user_routes import WebUserRoutes
 @wu.route()
 @tryton.transaction()
 def web_user_register():
-    wur = WebUserRoutes(Response, current_app.logger)
-    return wur.web_user_register(request, tryton.pool)
+    return WebUserRoutes.web_user_register(
+            Response, request, tryton.pool, current_app.logger)
 
 
 @bp.route('/<database_name>/web-user-tokens',
@@ -20,21 +20,21 @@ def web_user_register():
 @wu.route()
 @tryton.transaction()
 def web_user_token():
-    wur = WebUserRoutes(Response, current_app.logger)
-    return wur.web_user_token(request, tryton.pool)
+    return WebUserRoutes.web_user_token(
+            Response, request, tryton.pool, current_app.logger)
 
 
 @bp.route('/<database_name>/web-user-me', methods=['OPTIONS', 'GET'])
 @wu.route()
 @tryton.transaction()
 def web_user_me():
-    wur = WebUserRoutes(Response, current_app.logger)
-    return wur.web_user_me(request, tryton.pool)
+    return WebUserRoutes.web_user_me(
+            Response, request, tryton.pool, current_app.logger)
 
 
 @bp.route('/<database_name>/web-user-avatar/<uuid>', methods={'OPTIONS', 'GET'})
 @wu.route()
 @tryton.transaction()
 def web_user_avatar(uuid):
-    wur = WebUserRoutes(Response, current_app.logger)
-    return wur.web_user_avatar(request, tryton.pool, uuid)
+    return WebUserRoutes.web_user_avatar(
+            Response, request, tryton.pool, current_app.logger, uuid)

@@ -37,11 +37,7 @@ class WebUser:
                     headers['Access-Control-Allow-Methods'] = 'GET,POST,PUT,DELETE'
                     headers['Access-Control-Max-Age'] = wu.timeout
                     return Response('preflight ok', 200, headers)
-                #current_app.logger.info('Function: ' + func.__name__)
-                #current_app.logger.info('args: ' + str(args))
-                #current_app.logger.info('kwargs: ' + str(kwargs))
                 if 'uuid' in kwargs.keys():
-                    #current_app.logger.info('Runing ' + func.__name__)
                     res = func(uuid=kwargs['uuid'])
                 else:
                     res = func()
@@ -49,6 +45,9 @@ class WebUser:
                     res = Response(json.dumps(res), 200)
                 if isinstance(res, Response):
                     res.headers = headers
+                #current_app.logger.info('Request Method: ' + request.method)
+                #current_app.logger.info('Request Origin: ' + request.origin)
+                #current_app.logger.info('Response Headers: ' + str(res.headers))
                 return res
             return wrapper
         return decorator
