@@ -19,6 +19,8 @@ Running ...
 
   - Tryton server must be `installed <https://docs.tryton.org/latest/server/topics/install.html#topics-install>`_ and `runnig <https://docs.tryton.org/latest/server/topics/start_server.html>`_, or you can use the Flask app instead (faster).
 
+  - Configure `Web user settings <https://docs.tryton.org/latest/modules-web-user/configuration.html#web>`_ in Tryton config file.
+
   - Configure `Email <https://docs.tryton.org/latest/server/topics/configuration.html#email>`_ in Tryton config file.
 
   - Add `cors <https://docs.tryton.org/latest/server/topics/configuration.html#cors>`_ entries in Tryton config file pointing to the react app server.
