@@ -26,11 +26,11 @@ def create_app(config_class=Config):
 
     if app.config['LOG_TO_STDOUT']:
         _create_logger_handler(app, logging.StreamHandler, logging.INFO)
-    else:
-        if not os.path.exists(app.config['LOG_PATH']):
-            os.mkdir(app.config['LOG_PATH'])
-        _create_logger_handler(app, RotatingFileHandler, logging.INFO,
-                               app.config['LOG_PATH'] + '/web-user.log')
+
+    if not os.path.exists(app.config['LOG_PATH']):
+        os.mkdir(app.config['LOG_PATH'])
+    _create_logger_handler(app, RotatingFileHandler, logging.INFO,
+                           app.config['LOG_PATH'] + '/web-user.log')
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Web User startup')

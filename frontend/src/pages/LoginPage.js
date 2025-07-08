@@ -41,8 +41,8 @@ export default function LoginPage() {
     }
 
     const result = await login(username, password, TRYTON_SERVER, TRYTON_DATABASE)
-    if (result === 'fail') {
-      flash('Invalid username or password', 'danger');
+    if (result.result === 'fail') {
+      flash(result.message, 'danger');
     }
     else if (result === 'ok') {
       let next = '/';

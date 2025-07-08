@@ -57,18 +57,18 @@ export default class TrytonApiClient {
       };
     }
 
-    let message
-    if (response.status >= 400){
-      try {
-        message = await response.text()
-      }
-      catch{
-        message = 'Unespected error ocurred. Retry later. (' + response.status + ')'
-      }
-    }
-    else {
-      message = response.status !== 204 ? await response.json() : null
-    }
+    let message = await this.get_message(response)
+    //if (response.status >= 400){
+    //  try {
+    //    message = await response.text()
+    //  }
+    //  catch{
+    //    message = 'Unespected error ocurred. Retry later. (' + response.status + ')'
+    //  }
+    //}
+    //else {
+    //  message = response.status !== 204 ? await response.json() : null
+    //}
 
     if (response.status >= 400){
       return {
@@ -108,8 +108,14 @@ export default class TrytonApiClient {
         Authorization:  'Basic ' + btoa(username + ":" + password)
       }
     });
+    //console.log(response)
     if (!response.ok) {
-      return response.status === 401 ? 'fail' : 'error';
+      let result;
+      result = {
+	      'message': response.body,
+	      'result': response.status === 401 ? 'fail' : 'error'  
+      }
+      return result
     }
     localStorage.setItem('accessToken', response.body.access_token);
     return 'ok';
@@ -122,5 +128,23 @@ export default class TrytonApiClient {
 
   isAuthenticated() {
     return localStorage.getItem('accessToken') !== null;
+  }
+
+  async get_message(response){
+    //console.log(response)
+    let message
+    if (response.status >= 400){
+      try {
+	message = await response.text();
+      }
+      catch{
+          message = 'Unespected error ocurred. Retry later. (' + response.status + ')'
+      }
+    }
+    else {
+      message = response.status !== 204 ? await response.json() : null;
+    }
+    //console.log(message)
+    return message
   }
 }

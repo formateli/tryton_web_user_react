@@ -17,7 +17,7 @@ Running ...
 
   - `Web User <https://docs.tryton.org/latest/modules-web-user/index.html>`_ and `Web User Routes <https://github.com/formateli/trytond_web_user_routes>`_ modules must be installed in all tryton databases.
 
-  - Tryton server must be `installed <https://docs.tryton.org/latest/server/topics/install.html#topics-install>`_ and `runnig <https://docs.tryton.org/latest/server/topics/start_server.html>`_, or you can use the Flask app instead.
+  - Tryton server must be `installed <https://docs.tryton.org/latest/server/topics/install.html#topics-install>`_ and `runnig <https://docs.tryton.org/latest/server/topics/start_server.html>`_, or you can use the Flask app instead (faster).
 
   - Configure `Email <https://docs.tryton.org/latest/server/topics/configuration.html#email>`_ in Tryton config file.
 
@@ -30,7 +30,7 @@ Running ...
     REACT_APP_TRYTON_SERVER=<http[s]://>servername_or_ip<:port>
     REACT_APP_TRYTON_DATABASE=database_name
 
-  - Clone git repository, pull node docker image, install dependencies and run the react app server on port 3000.
+  - Clone git repository, pull 'node' docker image, install dependencies and run the react app server on port 3000.
 
   .. code-block:: bash
 

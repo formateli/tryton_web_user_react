@@ -24,7 +24,6 @@ export default function UserProvider({ children }) {
 
   const login = useCallback(async (username, password, server, database) => {
     const result = await api.login(username, password, server, database);
-    console.log(result)
     if (result === 'ok') {
       const response = await api.get(server, database, '/web-user-me');
       setUser(response.ok ? response.body : null);

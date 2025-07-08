@@ -12,7 +12,8 @@ from trytond.modules.web_user_routes.web_user_routes import WebUserRoutes
 @tryton.transaction()
 def web_user_register():
     return WebUserRoutes.web_user_register(
-            Response, request, tryton.pool, current_app.logger)
+            Response, request, tryton.pool,
+            current_app.logger, current_app.config['AUTH_EMAIL'])
 
 
 @bp.route('/<database_name>/web-user-tokens',
@@ -21,7 +22,8 @@ def web_user_register():
 @tryton.transaction()
 def web_user_token():
     return WebUserRoutes.web_user_token(
-            Response, request, tryton.pool, current_app.logger)
+            Response, request, tryton.pool,
+            current_app.logger, current_app.config['AUTH_EMAIL'])
 
 
 @bp.route('/<database_name>/web-user-me', methods=['OPTIONS', 'GET'])

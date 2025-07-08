@@ -8,6 +8,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 
 class Config:
+    AUTH_EMAIL = os.environ.get('AUTH_EMAIL') is not None
     TRYTON_DATABASE = os.environ.get('TRYTON_DATABASE', None)
     TRYTON_CONFIG = os.environ.get(
             'TRYTON_CONFIG',
@@ -15,5 +16,4 @@ class Config:
             )
     SECRET_KEY = os.environ.get('SECRET_KEY', os.urandom(32))
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT') is not None
-    LOG_PATH = os.environ.get('LOG_PATH', 'log')
-    TESTING = False
+    LOG_PATH = os.environ.get('LOG_PATH', '/tmp/log')
