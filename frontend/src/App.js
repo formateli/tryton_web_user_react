@@ -8,14 +8,9 @@ import PublicRoute from './components/PublicRoute';
 import PrivateRoute from './components/PrivateRoute';
 import ProfilePage from './pages/ProfilePage'
 import WelcomePage from './pages/WelcomePage';
-//import ExplorePage from './pages/ExplorePage';
-//import UserPage from './pages/UserPage';
-//import EditUserPage from './pages/EditUserPage';
-//import ChangePasswordPage from './pages/ChangePasswordPage';
+import EmailVerificationPage from './pages/EmailVerificationPage'
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
-//import ResetRequestPage from './pages/ResetRequestPage';
-//import ResetPage from './pages/ResetPage';
 
 export default function App() {
   return (
@@ -31,6 +26,9 @@ export default function App() {
                 } />
                 <Route path="/web-user-register" element={
                   <PublicRoute><RegistrationPage /></PublicRoute>
+                } />
+                <Route path="/web-user-email-verify" element={
+                  <PublicRoute><EmailVerificationPage /></PublicRoute>
                 } />
                 <Route path="*" element={
                   <PrivateRoute>

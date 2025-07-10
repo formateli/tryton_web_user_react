@@ -58,17 +58,6 @@ export default class TrytonApiClient {
     }
 
     let message = await this.get_message(response)
-    //if (response.status >= 400){
-    //  try {
-    //    message = await response.text()
-    //  }
-    //  catch{
-    //    message = 'Unespected error ocurred. Retry later. (' + response.status + ')'
-    //  }
-    //}
-    //else {
-    //  message = response.status !== 204 ? await response.json() : null
-    //}
 
     if (response.status >= 400){
       return {
