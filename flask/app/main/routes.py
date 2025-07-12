@@ -49,6 +49,7 @@ def web_user_avatar(uuid):
     return WebUserRoutes.web_user_avatar(
             Response, request, tryton.pool, current_app.logger, uuid)
 
+
 @bp.route('/<database_name>/web-user-email-verify', methods={'OPTIONS', 'PUT'})
 @wu.route()
 @tryton.transaction()
