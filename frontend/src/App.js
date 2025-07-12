@@ -9,6 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import ProfilePage from './pages/ProfilePage'
 import WelcomePage from './pages/WelcomePage';
 import EmailVerificationPage from './pages/EmailVerificationPage'
+import PasswordChangePage from './pages/PasswordChangePage'
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 
@@ -35,6 +36,7 @@ export default function App() {
                     <Routes>
                       <Route path="/" element={<WelcomePage />} />
                       <Route path="/profile" element={<ProfilePage />} />
+                      <Route path="/password" element={<PasswordChangePage />} />
                       <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                   </PrivateRoute>

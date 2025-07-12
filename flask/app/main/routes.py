@@ -34,6 +34,14 @@ def web_user_me():
             Response, request, tryton.pool, current_app.logger)
 
 
+@bp.route('/<database_name>/web-user-password', methods=['OPTIONS', 'PUT'])
+@wu.route()
+@tryton.transaction()
+def web_user_password():
+    return WebUserRoutes.web_user_password(
+            Response, request, tryton.pool, current_app.logger)
+
+
 @bp.route('/<database_name>/web-user-avatar/<uuid>', methods={'OPTIONS', 'GET'})
 @wu.route()
 @tryton.transaction()

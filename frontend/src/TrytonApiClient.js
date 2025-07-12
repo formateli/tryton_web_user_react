@@ -111,8 +111,10 @@ export default class TrytonApiClient {
   }
 
   async logout(server, database) {
-    await this.delete(server, database, '/web-user-tokens');
-    localStorage.removeItem('accessToken');
+    if (this.isAuthenticated()) {
+      await this.delete(server, database, '/web-user-tokens');
+      localStorage.removeItem('accessToken');
+    }
   }
 
   isAuthenticated() {
