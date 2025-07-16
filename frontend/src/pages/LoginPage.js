@@ -66,7 +66,7 @@ export default function LoginPage() {
         <Button variant="primary" type="submit">Login</Button>
       </Form>
       <hr />
-      <p>Forgot your password? You can <Link to="/reset-request">reset it</Link>.</p>
+      <p>Forgot your password? You can <Link to="/web-user-password-reset">reset it</Link>.</p>
       <p>Don&apos;t have an account? <Link to="/web-user-register">Register here</Link>!</p>
     </Body>
   );

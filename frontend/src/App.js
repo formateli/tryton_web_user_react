@@ -12,6 +12,8 @@ import EmailVerificationPage from './pages/EmailVerificationPage'
 import PasswordChangePage from './pages/PasswordChangePage'
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
+import PasswordResetPage from './pages/PasswordResetPage';
+import PasswordResetVerificationPage from './pages/PasswordResetVerificationPage';
 
 export default function App() {
   return (
@@ -30,6 +32,12 @@ export default function App() {
                 } />
                 <Route path="/web-user-email-verify" element={
                   <PublicRoute><EmailVerificationPage /></PublicRoute>
+                } />
+                <Route path="/web-user-password-reset" element={
+                  <PublicRoute><PasswordResetPage /></PublicRoute>
+                } />
+                <Route path="/web-user-password-reset-verify" element={
+                  <PublicRoute><PasswordResetVerificationPage /></PublicRoute>
                 } />
                 <Route path="*" element={
                   <PrivateRoute>
