@@ -25,7 +25,7 @@ export default function Header() {
               {user !== null &&
                 <div className="justify-content-end">
                   <NavDropdown title={
-                    <Image src={TRYTON_SERVER + '/' + TRYTON_DATABASE + '/web-user-avatar/'+ user.avatar_uuid} roundedCircle />
+                    <Image src={TRYTON_SERVER + '/' + TRYTON_DATABASE + '/web-user-avatar/'+ user.data.avatar_uuid} roundedCircle />
                   } align="end">
                     <NavDropdown.Item as={NavLink} to="/profile">
                       Profile

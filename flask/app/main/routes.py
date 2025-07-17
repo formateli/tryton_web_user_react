@@ -26,7 +26,7 @@ def web_user_token():
             current_app.logger, current_app.config['AUTH_EMAIL'])
 
 
-@bp.route('/<database_name>/web-user-me', methods=['OPTIONS', 'GET'])
+@bp.route('/<database_name>/web-user-me', methods=['OPTIONS', 'GET', 'PUT'])
 @wu.route()
 @tryton.transaction()
 def web_user_me():
